@@ -1,8 +1,8 @@
 <?php
-include 'function.php';
+include __DIR__ . './functions.php';
 
-if(isset($_POST['email'])){
-    emailCheck($_POST['email']);
+if (isset($_GET['email'])) {
+    list($result, $message) = emailCheck($_GET['email']);
 }
 
 ?>
@@ -26,12 +26,17 @@ if(isset($_POST['email'])){
         </p>
         <div class="row justify-content-center">
             <div class="col-5">
-                <form action="index.php" class="mb-3 d-flex flex-column align-items-center" method="POST">
+                <form action="index.php" class="mb-3 d-flex flex-column align-items-center" method="GET">
                     <div class="mb-3">
                         <input type="text" name="email" class="form-control" placeholder="Inserisci la tua email">
                     </div>
 
                     <button class="btn btn-primary w-25" type="submit">Invia</button>
+
+                    <?php if(isset($_GET['email'])) { 
+                        include 'alert.php';
+                    } ?>
+
                 </form>
             </div>
 
