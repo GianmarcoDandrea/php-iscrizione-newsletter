@@ -1,6 +1,14 @@
 <?php
 include __DIR__ . './functions.php';
 
+session_start();
+
+if (isset($_SESSION['auth']) && $_SESSION['auth'] === true) {
+    header('Location: ./thankyou.php');
+    die;
+}
+
+
 if (isset($_GET['email'])) {
     list($result, $message) = emailCheck($_GET['email']);
 }
@@ -24,11 +32,11 @@ if (isset($_GET['email'])) {
         <p class="text-center">
             Inserisci la tua email
         </p>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center w-100">
             <div class="col-5">
-                <form action="index.php" class="mb-3 d-flex flex-column align-items-center" method="GET">
-                    <div class="mb-3">
-                        <input type="text" name="email" class="form-control" placeholder="Inserisci la tua email">
+                <form action="index.php" class="mb-3 d-flex flex-column align-items-center w-100" method="GET">
+                    <div class="mb-3 w-75">
+                        <input type="text" name="email" class="form-control w-100" placeholder="Inserisci la tua email">
                     </div>
 
                     <button class="btn btn-primary w-25" type="submit">Invia</button>
