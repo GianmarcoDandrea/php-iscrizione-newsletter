@@ -11,6 +11,11 @@ if (isset($_SESSION['auth']) && $_SESSION['auth'] === true) {
 
 if (isset($_GET['email'])) {
     list($result, $message) = emailCheck($_GET['email']);
+    
+    $value = $_GET['email'];
+    
+} else {
+    $value = '';
 }
 
 ?>
@@ -36,7 +41,12 @@ if (isset($_GET['email'])) {
             <div class="col-5">
                 <form action="index.php" class="mb-3 d-flex flex-column align-items-center w-100" method="GET">
                     <div class="mb-3 w-75">
-                        <input type="text" name="email" class="form-control w-100" placeholder="Inserisci la tua email">
+                        <input 
+                        type="text" 
+                        name="email" 
+                        class="form-control w-100" 
+                        placeholder="Inserisci la tua email"
+                        value="<?php echo $value;?>">
                     </div>
 
                     <button class="btn btn-primary w-25" type="submit">Invia</button>
