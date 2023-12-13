@@ -1,13 +1,8 @@
 <?php
+include 'function.php';
 
-if (!isset($_POST['email'])) {
-
-} else {
-    if (str_contains($_POST['email'], '@') && str_contains($_POST['email'], '.')) {
-        echo 'l\'email è stata inserita correttamente';
-    } else {
-        echo 'l\'email non è stata inserita correttamente';
-    }
+if(isset($_POST['email'])){
+    emailCheck($_POST['email']);
 }
 
 ?>
