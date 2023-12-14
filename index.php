@@ -1,18 +1,16 @@
 <?php
-include __DIR__ . './functions.php';
+include __DIR__ . '/functions.php';
 
 session_start();
 
-if (isset($_SESSION['auth']) && $_SESSION['auth'] === true) {
-    header('Location: ./thankyou.php');
-    die;
-}
 
 
-if (isset($_GET['email'])) {
-    list($result, $message) = emailCheck($_GET['email']);
+if (isset($_POST['email'])) {
+    $_SESSION['email'] = $_POST['email'];
+    $email = $_POST['email'];
+    list($result, $message) = emailCheck($email);
     
-    $value = $_GET['email'];
+    $value = $email;
     
 } else {
     $value = '';
@@ -39,7 +37,7 @@ if (isset($_GET['email'])) {
         </p>
         <div class="row justify-content-center w-100">
             <div class="col-5">
-                <form action="index.php" class="mb-3 d-flex flex-column align-items-center w-100" method="GET">
+                <form action="index.php" class="mb-3 d-flex flex-column align-items-center w-100" method="POST">
                     <div class="mb-3 w-75">
                         <input 
                         type="text" 
@@ -51,7 +49,7 @@ if (isset($_GET['email'])) {
 
                     <button class="btn btn-primary w-25" type="submit">Invia</button>
 
-                    <?php if(isset($_GET['email'])) { 
+                    <?php if(isset($_POST['email'])) { 
                         include 'alert.php';
                     } ?>
 

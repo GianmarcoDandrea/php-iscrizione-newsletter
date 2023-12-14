@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+var_dump($_SESSION['email']);
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ session_start();
 
         <h1 class="mt-5 text-center">Benvenuto Utente</h1>
         <p class="text-center">Da adesso riceverai la nostra newsletter tutte le settimane</p>
-        <a class="btn btn-danger" href="./exit.php" >Esci</a>
+
     </div>
 
 </body>
