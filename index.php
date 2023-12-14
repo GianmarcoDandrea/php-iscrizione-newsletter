@@ -9,11 +9,8 @@ if (isset($_POST['email'])) {
     $_SESSION['email'] = $_POST['email'];
     $email = $_POST['email'];
     list($result, $message) = emailCheck($email);
+
     
-    $value = $email;
-    
-} else {
-    $value = '';
 }
 
 ?>
@@ -44,7 +41,7 @@ if (isset($_POST['email'])) {
                         name="email" 
                         class="form-control w-100" 
                         placeholder="Inserisci la tua email"
-                        value="<?php echo $value;?>">
+                        value="<?php echo !empty($_POST['email']) ? $_POST['email'] : '' ?>">
                     </div>
 
                     <button class="btn btn-primary w-25" type="submit">Invia</button>
